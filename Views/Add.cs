@@ -32,6 +32,12 @@ namespace Laba4Dima.Views
                 Class = Class.Text
             };
 
+            if (animal.Age == 0 || animal.Class == string.Empty || animal.Iq == 0 || animal.Name == string.Empty)
+            {
+                MessageBox.Show("Все поля заполните ПОЖАЛУЙСТА");
+                return;
+            }
+
             AnimalController animalController = new AnimalController();
             animalController.AddAnumal(animal);
 
