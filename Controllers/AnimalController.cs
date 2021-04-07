@@ -23,23 +23,58 @@ namespace Laba4Dima.Controllers
         {
             var result = new List<Animal>();
 
+            bool isCompleted = true;
+
             using (TextReader fileReader = File.OpenText(Path))
             using (var csv = new CsvReader(fileReader))
             {
                 var d = csv.Configuration.Delimiter;
-                csv.Read();
-                var records = csv.GetRecords<Animal>();
-                foreach (var r in records)
+                try
                 {
-                    result.Add(new Animal() { Id = r.Id, Name = r.Name, Age = r.Age, Iq = r.Iq, Class = r.Class });
+                    csv.Read();
+                    var records = csv.GetRecords<Animal>();
+                    foreach (var r in records)
+                    {
+                        result.Add(new Animal() { Id = r.Id, Name = r.Name, Age = r.Age, Iq = r.Iq, Class = r.Class });
+                    }
+                    isCompleted = true;
                 }
+                catch
+                {
+                    isCompleted = false;
+                }
+                
             }
+
+            if (!isCompleted)
+            {
+                System.IO.File.Delete(Path);
+
+                using (FileStream fstream = System.IO.File.Create(Path))
+                {
+                    string s1 = "Id,Name,Age,Iq,Class";
+                    byte[] array = System.Text.Encoding.Default.GetBytes(s1);
+                    string s2 = "0,0,0,0,0";
+                    byte[] array2 = System.Text.Encoding.Default.GetBytes(s2);
+                    byte[] array3 = System.Text.Encoding.Default.GetBytes("\n");
+                    fstream.Write(array, 0, array.Length);
+                    fstream.Write(array3, 0, array3.Length);
+                    fstream.Write(array2, 0, array2.Length);
+                    fstream.Write(array3, 0, array3.Length);
+                }
+
+                result = GetAllAnimals();
+            }
+
+            
 
             return result;
         }
 
         public bool AddAnumal(Animal animal)
         {
+            
+
             var result = new List<Animal>
             {
                 new Animal()
