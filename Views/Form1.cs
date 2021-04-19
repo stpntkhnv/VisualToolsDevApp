@@ -26,7 +26,7 @@ namespace Laba4Dima
             var animals = repo.GetAllAnimals();
             foreach (var animal in animals)
             {
-                dataGridView1.Rows.Add(animal.Id.ToString(), animal.Age, animal.Name, animal.Iq, animal.Class);
+                dataGridView1.Rows.Add(animal.Id.ToString(), animal.Name, animal.Age, animal.Class, animal.Gender);
             }
         }
 
@@ -62,6 +62,11 @@ namespace Laba4Dima
         {
             StringView sv = new StringView();
             sv.Show();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

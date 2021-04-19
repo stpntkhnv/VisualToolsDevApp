@@ -25,8 +25,8 @@ namespace Laba4Dima.Views
             {
                 Name = Namei.Text,
                 Age = (int)Agei.Value,
-                Iq = (int)Iqi.Value,
-                Class = Classi.Text
+                Class = ClassBox.Text,
+                Gender = man.Checked ? "man" : notman.Checked ? "women" : "xyuznaet"
             };
 
             AnimalController animalController = new AnimalController();
@@ -35,7 +35,7 @@ namespace Laba4Dima.Views
             var animals = animalController.SearchAnimal(animal);
             foreach (var enemy in animals)
             {
-                dataGridView1.Rows.Add(enemy.Name, enemy.Age, enemy.Iq, enemy.Class);
+                dataGridView1.Rows.Add(enemy.Name, enemy.Age, enemy.Class, enemy.Gender);
             }
         }
     }

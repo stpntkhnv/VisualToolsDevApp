@@ -11,12 +11,12 @@ namespace Laba4Dima.Models
         public string Id { get; set; }
         public string Name { get; set; }
         public int Age { get; set; }
-        public int Iq { get; set; }
         public string Class { get; set; }
+        public string Gender { get; set; }
 
         public override string ToString()
         {
-            return $"Это животное имеет имя {this.Name}. Живет на нашей планете уже целых {this.Age} лет. Относится к древнейшему классу {this.Class}. Интеллектуальное развитие можно определить по Iq равному {this.Iq}";
+            return $"Это животное имеет имя {this.Name}. Живет на нашей планете уже целых {this.Age} лет. Относится к древнейшему классу {this.Class}. Интеллектуальное развитие можно определить по Iq равному";
         }
     }
 }

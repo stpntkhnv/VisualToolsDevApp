@@ -33,7 +33,7 @@ namespace Laba4Dima.Views
                 Name = Namei.Text,
                 Class = Classi.Text,
                 Age = (int)Agei.Value,
-                Iq = (int)Iqi.Value
+                Gender = man.Checked ? "man" : notman.Checked ? "women" : "xyuznaet"
             };
 
             animalController.EditAnimal(selectedAnimal, newAnimal);
@@ -50,7 +50,6 @@ namespace Laba4Dima.Views
             Namei.Text = "";
             Classi.Text = "";
             Agei.Value = 0;
-            Iqi.Value = 0;
         }
 
         private void listBox1_Click(object sender, EventArgs e)
@@ -64,7 +63,6 @@ namespace Laba4Dima.Views
             Namei.Text = selectedAnimal.Name;
             Classi.Text = selectedAnimal.Class;
             Agei.Value = selectedAnimal.Age;
-            Iqi.Value = selectedAnimal.Iq;
         }
 
         private void Edit_Load(object sender, EventArgs e)

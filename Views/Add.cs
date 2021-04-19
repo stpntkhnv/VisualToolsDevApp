@@ -27,12 +27,12 @@ namespace Laba4Dima.Views
             {
                 Id = Guid.NewGuid().ToString(),
                 Name = Name.Text,
-                Iq = (int)Iq.Value,
                 Age = (int)Age.Value,
-                Class = Class.Text
+                Gender = man.Checked?"man":notman.Checked?"women":"xyuznaet",
+                Class = ClassBox.Text
             };
 
-            if (animal.Age == 0 || animal.Class == string.Empty || animal.Iq == 0 || animal.Name == string.Empty)
+            if (animal.Age == 0 || animal.Class == string.Empty || animal.Name == string.Empty)
             {
                 MessageBox.Show("Все поля заполните ПОЖАЛУЙСТА");
                 return;
@@ -42,9 +42,7 @@ namespace Laba4Dima.Views
             animalController.AddAnumal(animal);
 
             Name.Text = "";
-            Iq.Value = 0;
             Age.Value = 0;
-            Class.Text = "";
 
             status.Text = "Животное успешно добавлено";
         }

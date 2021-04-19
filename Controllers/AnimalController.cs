@@ -35,7 +35,7 @@ namespace Laba4Dima.Controllers
                     var records = csv.GetRecords<Animal>();
                     foreach (var r in records)
                     {
-                        result.Add(new Animal() { Id = r.Id, Name = r.Name, Age = r.Age, Iq = r.Iq, Class = r.Class });
+                        result.Add(new Animal() { Id = r.Id, Name = r.Name, Age = r.Age, Class = r.Class, Gender = r.Gender });
                     }
                     isCompleted = true;
                 }
@@ -52,7 +52,7 @@ namespace Laba4Dima.Controllers
 
                 using (FileStream fstream = System.IO.File.Create(Path))
                 {
-                    string s1 = "Id,Name,Age,Iq,Class";
+                    string s1 = "Id,Name,Age,Class,Gender";
                     byte[] array = System.Text.Encoding.Default.GetBytes(s1);
                     string s2 = "0,0,0,0,0";
                     byte[] array2 = System.Text.Encoding.Default.GetBytes(s2);
@@ -82,8 +82,8 @@ namespace Laba4Dima.Controllers
                     Id = Guid.NewGuid().ToString(),
                     Name = animal.Name,
                     Age = animal.Age,
-                    Iq = animal.Iq,
-                    Class = animal.Class
+                    Class = animal.Class,
+                    Gender = animal.Gender
                 }
             };
             try
@@ -163,7 +163,7 @@ namespace Laba4Dima.Controllers
 
             using (FileStream fstream = System.IO.File.Create(Path))
             {
-                string s1 = "Id,Name,Age,Iq,Class";
+                string s1 = "Id,Name,Age,Class,Gender";
                 byte[] array = System.Text.Encoding.Default.GetBytes(s1);
                 string s2 = "0,0,0,0,0";
                 byte[] array2 = System.Text.Encoding.Default.GetBytes(s2);
@@ -198,8 +198,8 @@ namespace Laba4Dima.Controllers
             {
                 if (enemy.Name == animal.Name
                     || enemy.Age == animal.Age
-                    || enemy.Iq == animal.Iq
-                    || enemy.Class == animal.Class)
+                    || enemy.Class == animal.Class
+                    || enemy.Gender == animal.Gender)
                 {
                     result.Add(enemy);
                 }
